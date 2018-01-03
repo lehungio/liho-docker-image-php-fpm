@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  phpfpm:
+    container_name: phpfpm
+    image: lehungio/php-fpm
+    entrypoint: php index.php
+    volumes:
+      - /path/to/your/app:/var/www/html
