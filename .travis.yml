@@ -1,0 +1,6 @@
+sudo: required
+services: docker
+script:
+  - docker build -t lehungio/php-fpm .
+after_script:
+  - docker images
