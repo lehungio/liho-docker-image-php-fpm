@@ -28,12 +28,12 @@ RUN docker-php-ext-install \
     pdo_mysql \
     pdo_pgsql \
     soap \
-    zip \
+    zip
 
 RUN docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
-        --with-png-dir=/usr/include/ \
+        --with-png-dir=/usr/include/
 
 RUN docker-php-ext-install gd \
     && docker-php-ext-configure intl  \
