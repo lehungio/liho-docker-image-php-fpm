@@ -1,4 +1,4 @@
-FROM php:7.1.11-fpm
+FROM php:5.6.32-fpm
 
 MAINTAINER Liho <me@lehungio.com>
 
@@ -23,6 +23,7 @@ RUN docker-php-ext-install \
     iconv \
     mbstring \
     mcrypt \
+    mysql \
     mysqli \
     pgsql \
     pdo_mysql \
