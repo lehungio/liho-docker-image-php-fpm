@@ -1,4 +1,4 @@
-FROM php:5.6.32-fpm
+FROM php:5.6-fpm
 
 MAINTAINER Liho <me@lehungio.com>
 
