@@ -2,6 +2,8 @@ FROM php:7.1-fpm
 
 MAINTAINER Liho <me@lehungio.com>
 
+RUN apt-get install -y git 
+
 RUN pecl install redis \
     && pecl install xdebug \
     && docker-php-ext-enable redis xdebug
