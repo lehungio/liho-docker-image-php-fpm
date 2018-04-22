@@ -1,10 +1,11 @@
-FROM php:7.1-fpm
+FROM php:7.2-fpm
 
 MAINTAINER Liho <me@lehungio.com>
 
+RUN apt-get update \
+    && apt-get install -my wget gnupg
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E1DD270288B4E6030699E45FA1715D88E1DF1F24
 RUN su -c "echo 'deb http://ppa.launchpad.net/git-core/ppa/ubuntu trusty main' > /etc/apt/sources.list.d/git.list"
-RUN apt-get update
 RUN apt-get install git -y
 
 RUN pecl install redis \
@@ -18,7 +19,7 @@ RUN apt-get update && apt-get upgrade -y \
     libmagickwand-dev \
     libmcrypt-dev \
     libmcrypt-dev \
-    libpng12-dev \
+    # libpng12-dev \
     libmemcached-dev \
     libssl-dev \
     libssl-doc \
@@ -31,7 +32,7 @@ RUN docker-php-ext-install \
     bz2 \
     iconv \
     mbstring \
-    mcrypt \
+    # mcrypt \
     mysqli \
     pgsql \
     pdo_mysql \
