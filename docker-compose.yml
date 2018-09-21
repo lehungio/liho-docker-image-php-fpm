@@ -18,8 +18,9 @@ services:
     image: nginx:latest
     ports:
       - "80:80"
-      - "6000:80"
-      - "6001:80"
+    depends_on:
+      - php
+      - php_test
     volumes:
       - ./:/code
       - ./site.conf:/etc/nginx/conf.d/site.conf
