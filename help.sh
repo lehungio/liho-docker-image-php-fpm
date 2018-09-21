@@ -15,9 +15,10 @@ helps() {
 
 allhelps() {
 cat <<EOF
-Usage: ./help.sh COMMAND
+💡 Usage: ./help.sh COMMAND
 [help|usage|build|init|up|down|restart|status|logs|ssh]
-[Commands]
+
+[CLI]
   build        Build docker service
   up or start  Run docker-compose as daemon (or up)
   down or stop Terminate all docker containers run by docker-compose (or down)
