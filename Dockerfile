@@ -47,3 +47,9 @@ RUN docker-php-ext-enable xdebug
 
 RUN pecl install redis && docker-php-ext-enable redis \
   && yes '' | pecl install imagick && docker-php-ext-enable imagick
+
+
+# rubygems gem sass
+RUN apt-get update \
+    && apt-get install -y rubygems gem vim \
+    && gem install sass -v 3.4.23
