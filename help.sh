@@ -63,25 +63,56 @@ status() {
 # Docker compose logs
 logs() {
 	case $1 in
-		liho|*)  docker-compose logs ;;
+		liho|*) docker-compose logs ;;
 	esac
 }
 
 # ssh cli
-dockerssh() {
+run_ssh() {
 	case $1 in
-		liho|*) docker-compose exec ${NAME} /bin/bash ;;
+		php-test|php_test) 
+			docker-compose exec php_test /bin/bash 
+		;;
+		liho|*) 
+			docker-compose exec ${NAME} /bin/bash 
+		;;
 	esac
 }
 
 case $1 in
-	init) init ${2:-v2};;
-	build) build ;;
-	start|up) start ;;
-	stop|down) stop ;;
-	restart|reboot) restart ;;
-	status|ps) status ;;
-	logs) logs ${2:-all} ;;
-	ssh) dockerssh ${2:-php} ;;
-	*) helps ;;
+	init) 
+		init ${2:-v2}
+	;;
+
+	build) 
+		build 
+	;;
+
+	start|up) 
+		start 
+	;;
+
+	stop|down) 
+		stop 
+	;;
+
+	restart|reboot) 
+		restart
+	;;
+
+	status|ps)
+		status
+	;;
+
+	logs)
+		logs ${2:-all}
+	;;
+
+	ssh)
+		run_ssh ${2:-php}
+	;;
+	
+	*)
+		helps
+	;;
 esac
