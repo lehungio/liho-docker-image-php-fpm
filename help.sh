@@ -35,6 +35,11 @@ usage() {
 	echo "${0} [help|usage|build|init|up|down|restart|status|logs|ssh]"
 }
 
+# init
+run_init() {
+	echo ""
+}
+
 # Docker compose build
 build() {
 	docker-compose build
@@ -63,7 +68,7 @@ status() {
 # Docker compose logs
 logs() {
 	case $1 in
-		liho|*) docker-compose logs ;;
+		php|*) docker-compose logs ;;
 	esac
 }
 
@@ -73,15 +78,15 @@ run_ssh() {
 		php-test|php_test) 
 			docker-compose exec php_test /bin/bash 
 		;;
-		liho|*) 
+		liho|*)
 			docker-compose exec ${NAME} /bin/bash 
 		;;
 	esac
 }
 
 case $1 in
-	init) 
-		init ${2:-v2}
+	init)
+		run_init ${2:-v2}
 	;;
 
 	build) 
