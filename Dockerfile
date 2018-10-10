@@ -1,6 +1,6 @@
 FROM php:5.6-fpm
 
-MAINTAINER Liho <me@lehungio.com>
+MAINTAINER lehungio <me@lehungio.com>
 
 RUN apt-get update && apt-get upgrade -y \
   libfreetype6-dev \
@@ -53,3 +53,7 @@ RUN pecl install redis && docker-php-ext-enable redis \
 RUN apt-get update \
     && apt-get install -y rubygems gem vim \
     && gem install sass -v 3.4.23
+
+# git-core
+RUN apt-get update \
+    && apt-get install git-core -y
