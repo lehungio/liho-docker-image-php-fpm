@@ -1,6 +1,25 @@
 FROM php:5.6-fpm
 
-MAINTAINER lehungio <me@lehungio.com>
+LABEL maintainer="me@lehungio.com"
+
+WORKDIR /code
+
+#  run sudo in docker ubuntu 16.04
+RUN apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
+
+# init
+RUN apt-get update \
+  && apt-get install -y \
+  wget \
+  curl \
+  vim \
+  iputils-ping \
+  mysql-client \
+  make \
+  g++ \
+  git \
+  git-core \
+  gnupg
 
 RUN apt-get update && apt-get upgrade -y \
   libfreetype6-dev \
@@ -51,9 +70,19 @@ RUN pecl install redis && docker-php-ext-enable redis \
 
 # rubygems gem sass
 RUN apt-get update \
-    && apt-get install -y rubygems gem vim \
-    && gem install sass -v 3.4.23
+  && apt-get install -y rubygems gem \
+  && gem install sass -v 3.4.23
 
-# git-core
+# python and pip
 RUN apt-get update \
-    && apt-get install git-core -y
+    && apt-get install -y python python-dev python-pip \
+    && pip install --upgrade --user awscli \
+    && apt-get install -y ntp telnet \
+    && apt-get install -y rsync
+
+# node & npm
+# RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+RUN apt-get install -y nodejs
+RUN npm install --quiet --production --no-progress --registry=${registry:-https://registry.npmjs.org} && \
+  npm cache clean --force
