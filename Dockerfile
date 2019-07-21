@@ -1,11 +1,12 @@
 FROM php:7.1-fpm
 
-MAINTAINER Liho <me@lehungio.com>
+LABEL MAINTAINER="me@lehungio.com"
+
+RUN apt-get update && \
+    apt-get install -y git gnupg2
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E1DD270288B4E6030699E45FA1715D88E1DF1F24
 RUN su -c "echo 'deb http://ppa.launchpad.net/git-core/ppa/ubuntu trusty main' > /etc/apt/sources.list.d/git.list"
-RUN apt-get update
-RUN apt-get install git -y
 
 RUN pecl install redis \
     && pecl install xdebug \
@@ -38,3 +39,21 @@ RUN docker-php-ext-install \
     pdo_pgsql \
     soap \
     zip
+
+# locale
+# https://github.com/LaraDock/laradock/issues/167#issuecomment-234805362
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libmemcached-dev \
+    curl \
+    libjpeg-dev \
+    libpng12-dev \
+    libfreetype6-dev \
+    libssl-dev \
+    libmcrypt-dev \
+    locales \
+    --no-install-recommends \
+    && rm -r /var/lib/apt/lists/* \
+    && sed -i 's/# en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/' /etc/locale.gen \
+    && sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+    && locale-gen
