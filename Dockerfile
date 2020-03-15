@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     libmagickwand-dev \
     libmcrypt-dev \
     libmcrypt-dev \
-    libpng12-dev \
+    # libpng12-dev \
     libmemcached-dev \
     libssl-dev \
     libssl-doc \
@@ -22,17 +22,15 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     g++
 
-RUN docker-php-ext-install \
-    bz2 \
-    iconv \
-    mbstring \
-    mcrypt \
-    mysqli \
-    pgsql \
-    pdo_mysql \
-    pdo_pgsql \
-    soap \
-    zip
+RUN docker-php-ext-install bz2
+# RUN docker-php-ext-install mbstring
+# RUN docker-php-ext-install mcrypt
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install pgsql
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_pgsql
+RUN docker-php-ext-install soap
+# RUN docker-php-ext-install zip
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd

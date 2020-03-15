@@ -12,6 +12,7 @@ services:
   web:
     image: nginx:latest
     ports:
+      - "80:80"
       - "38086:80"
     volumes:
       - ./:/code
