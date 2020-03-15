@@ -61,7 +61,7 @@ status() {
 
 # Docker compose logs
 logs() {
-	case $1 in
+	case $2 in
 		liho|*)  docker-compose logs ;;
 	esac
 }
@@ -69,11 +69,19 @@ logs() {
 # ssh cli
 dockerssh() {
 	case $1 in
-		liho|*) docker-compose exec ${NAME} /bin/bash ;;
+		*) docker-compose exec php_test /bin/bash ;;
+	esac
+}
+
+# open test page
+open() {
+	case $1 in
+		*)  open http://localhost:38086 ;;
 	esac
 }
 
 case $1 in
+	open) open ${2};;
 	init) init ${2:-v2};;
 	build) build ;;
 	start|up) start ;;

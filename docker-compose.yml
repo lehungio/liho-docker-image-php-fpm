@@ -1,11 +1,6 @@
 version: '3.3'
 
 services:
-  php:
-    image: lehungio/php-fpm:7.1
-    volumes:
-        - ./:/code
-
   php_test:
     build:
       context: .
@@ -18,8 +13,7 @@ services:
     image: nginx:latest
     ports:
       - "80:80"
-      - "6000:80"
-      - "6001:80"
+      - "38086:80"
     volumes:
       - ./:/code
       - ./site.conf:/etc/nginx/conf.d/site.conf
