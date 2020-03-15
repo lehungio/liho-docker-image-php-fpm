@@ -35,9 +35,17 @@ RUN docker-php-ext-install soap
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
+# exif
 RUN docker-php-ext-configure exif
 RUN docker-php-ext-install exif
 RUN docker-php-ext-enable exif
 
-# RUN php --ini
-# RUN php -r "phpinfo();"
+# zip
+RUN apt-get install -y libzip-dev zip && docker-php-ext-install zip
+
+# imagick
+RUN pecl install imagick
+
+RUN php -r "phpinfo();"
+RUN php --ini
+RUN php --version
