@@ -1,12 +1,12 @@
-FROM php:7.1-fpm
+FROM php:7.4-fpm
 
-MAINTAINER Liho <me@lehungio.com>
+LABEL lehungio <me@lehungio.com>
 
 RUN pecl install redis \
     && pecl install xdebug \
     && docker-php-ext-enable redis xdebug
 
-RUN apt-get update && apt-get upgrade -y \
+RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpq-dev \
@@ -33,3 +33,6 @@ RUN docker-php-ext-install \
     pdo_pgsql \
     soap \
     zip
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd

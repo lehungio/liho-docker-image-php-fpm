@@ -66,6 +66,13 @@ logs() {
 	esac
 }
 
+# open test page
+open() {
+	case $1 in
+		*)  open http://localhost:38086 ;;
+	esac
+}
+
 # ssh cli
 dockerssh() {
 	case $1 in
