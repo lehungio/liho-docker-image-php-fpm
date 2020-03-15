@@ -69,7 +69,7 @@ logs() {
 # ssh cli
 dockerssh() {
 	case $1 in
-		liho|*) docker-compose exec ${NAME} /bin/bash ;;
+		*) docker-compose exec php_test /bin/bash ;;
 	esac
 }
 
