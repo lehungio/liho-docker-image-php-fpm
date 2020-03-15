@@ -38,10 +38,12 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # exif
 RUN docker-php-ext-configure exif
 RUN docker-php-ext-install exif
-RUN docker-php-ext-enable exif
+# RUN docker-php-ext-enable exif 
+# warning: exif (exif.so) is already loaded!
 
 # zip
 RUN apt-get install -y libzip-dev zip && docker-php-ext-install zip
+# TODO debconf: delaying package configuration, since apt-utils is not installed
 
 # imagick
 RUN pecl install imagick
