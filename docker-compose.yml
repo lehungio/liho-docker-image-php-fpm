@@ -1,7 +1,9 @@
-version: '3.3'
+# TODO version 3.8
+version: '3.7'
 
 services:
-  php_test:
+  php:
+    container_name: php
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,11 +11,11 @@ services:
     volumes:
       - ".:/code"
 
-  web:
+  nginx:
+    container_name: nginx
     image: nginx:latest
     ports:
-      - "80:80"
-      - "38086:80"
+      - "38086:38086"
     volumes:
       - ./:/code
       - ./site.conf:/etc/nginx/conf.d/site.conf

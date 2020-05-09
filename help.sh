@@ -25,6 +25,7 @@ Usage: ./help.sh COMMAND
   status       View docker containers status
   logs         View docker containers logs
   ssh          ssh cli
+	open         open localhost test page
 EOF
 }
 
@@ -69,19 +70,19 @@ logs() {
 # ssh cli
 dockerssh() {
 	case $1 in
-		*) docker-compose exec php_test /bin/bash ;;
+		*) docker-compose exec php /bin/bash ;;
 	esac
 }
 
 # open test page
-open() {
-	case $1 in
+run_open() {
+	case $2 in
 		*)  open http://localhost:38086 ;;
 	esac
 }
 
 case $1 in
-	open) open ${2};;
+	open) run_open ${1} ${2};;
 	init) init ${2:-v2};;
 	build) build ;;
 	start|up) start ;;
