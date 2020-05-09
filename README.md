@@ -1,13 +1,13 @@
 # liho-docker-image-php-fpm
 Docker image for [PHP-FPM](https://php-fpm.org/).
 
-[![Build Status](https://travis-ci.org/lehungio/php-fpm.svg?branch=master)](https://travis-ci.org/lehungio/liho-docker-image-php-fpm) [![Automated Build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/lehungio/php-fpm/builds/)
+[![Build Status](https://travis-ci.org/lehungio/php-fpm.svg?branch=master)](https://travis-ci.org/lehungio/php-fpm) [![Automated Build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/lehungio/php-fpm/builds/)
 
 ## Supported branches and respective Dockerfile links
- - [latest](https://github.com/lehungio/liho-docker-image-php-fpm/blob/mater/Dockerfile)
- - [7.4](https://github.com/lehungio/liho-docker-image-php-fpm/blob/7.4/Dockerfile)
- - [7.1](https://github.com/lehungio/liho-docker-image-php-fpm/blob/7.1/Dockerfile)
- - [5.6](https://github.com/lehungio/liho-docker-image-php-fpm/blob/5.6/Dockerfile)
+ - [latest](https://github.com/lehungio/php-fpm/blob/master/Dockerfile)
+ - [7.4](https://github.com/lehungio/php-fpm/7.4/Dockerfile)
+ - [7.1](https://github.com/lehungio/php-fpm/blob/7.1/Dockerfile)
+ - [5.6](https://github.com/lehungio/php-fpm/blob/5.6/Dockerfile)
 
 ## What is PHP-FPM ?
 PHP-FPM (FastCGI Process Manager) is an alternative FastCGI implementation for PHP.
