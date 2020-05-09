@@ -48,6 +48,23 @@ RUN apt-get install -y libzip-dev zip && docker-php-ext-install zip
 # imagick
 RUN pecl install imagick
 
+# Node dependencies
+# https://github.com/nvm-sh/nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+RUN nvm install node
+
+# Install yarn package
+
+# Summary installation
+# 01. PHP
 RUN php -r "phpinfo();"
 RUN php --ini
 RUN php --version
+
+RUN uname -a
+
+# 02. NVM / Node / Yarn
+RUN command -v nvm
+RUN nvm ls-remote
+RUN nvm list
+RUN node --version
