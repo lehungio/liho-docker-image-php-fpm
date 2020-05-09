@@ -25,7 +25,7 @@ Usage: ./help.sh COMMAND
   status       View docker containers status
   logs         View docker containers logs
   ssh          ssh cli
-	open         open localhost test page
+  open         open localhost test page
 EOF
 }
 
