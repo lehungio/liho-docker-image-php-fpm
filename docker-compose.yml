@@ -3,7 +3,7 @@ version: '3.7'
 
 services:
   php:
-    container_name: php
+    container_name: php-build
     build:
       context: .
       dockerfile: Dockerfile
@@ -12,7 +12,7 @@ services:
       - ".:/code"
 
   nginx:
-    container_name: nginx
+    container_name: nginx-image
     image: nginx:latest
     ports:
       - "38086:38086"

@@ -48,12 +48,34 @@ RUN apt-get install -y libzip-dev zip && docker-php-ext-install zip
 # imagick
 RUN pecl install imagick
 
+# update 
+RUN apt-get update
+
 # Node dependencies
+# https://github.com/nodejs/Release
+ENV NVM_DIR /root/.nvm
+ENV NODE_VERSION 14
+# Instal nvm, node, yarn
 # https://github.com/nvm-sh/nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-RUN nvm install node
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash \
+    && export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" \
+    && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
+    && nvm install $NODE_VERSION \
+    && nvm alias default $NODE_VERSION \
+    && nvm use default \
+    && npm install yarn -g
+
+# TODO This loads nvm
+# Replace shell with bash so we can source files
+# RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+# this command can not load properly when build, but  can run directly in ssh
+# RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+# https://stackoverflow.com/questions/25899912/how-to-install-nvm-in-docker
 
 # Install yarn package
+# RUN apt-get update && apt-get install -y yarn
+
+RUN apt-get update 
 
 # Summary installation
 # 01. PHP
@@ -64,7 +86,9 @@ RUN php --version
 RUN uname -a
 
 # 02. NVM / Node / Yarn
-RUN command -v nvm
-RUN nvm ls-remote
-RUN nvm list
-RUN node --version
+# RUN nvm --version
+# RUN command -v nvm
+# RUN nvm ls-remote
+# RUN nvm list
+# RUN node --version
+# RUN yarn --version
