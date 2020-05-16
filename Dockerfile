@@ -72,10 +72,11 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | b
 # RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 # https://stackoverflow.com/questions/25899912/how-to-install-nvm-in-docker
 
-# Install yarn package
-# RUN apt-get update && apt-get install -y yarn
+# Install git dependencies
+RUN apt-get update && apt-get install -y git
 
-RUN apt-get update 
+# Update latest build
+RUN apt-get update
 
 # Summary installation
 # 01. PHP
