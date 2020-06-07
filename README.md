@@ -1,4 +1,4 @@
-# php-fpm docker image
+# image: lehungio/php-fpm:latest
 Docker image for [PHP-FPM](https://php-fpm.org/).
 
 [![Build Status](https://travis-ci.org/lehungio/php-fpm.svg?branch=master)](https://travis-ci.org/lehungio/php-fpm) [![Automated Build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/lehungio/php-fpm/builds/)
