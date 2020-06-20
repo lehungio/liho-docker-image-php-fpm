@@ -109,6 +109,12 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs npm
 RUN npm install yarn -g
 
+# mysql dependencies
+RUN apt-get update && apt-get install -y \
+    vim \
+    default-mysql-client \
+    netcat
+
 # Summary installation
 # 01. PHP
 RUN php -r "phpinfo();"
@@ -126,3 +132,9 @@ RUN uname -a
 RUN node -v
 RUN npm -v
 RUN yarn -v
+
+# 03. MYSQL CLIENT
+RUN mysql --version
+
+# Disk usage
+RUN df -h
