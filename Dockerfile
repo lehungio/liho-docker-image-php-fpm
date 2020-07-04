@@ -3,7 +3,7 @@ FROM php:7.1-fpm
 LABEL MAINTAINER="me@lehungio.com"
 
 RUN apt-get update && \
-    apt-get install -y git gnupg2
+    apt-get install -y git gnupg2 zip
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E1DD270288B4E6030699E45FA1715D88E1DF1F24
 RUN su -c "echo 'deb http://ppa.launchpad.net/git-core/ppa/ubuntu trusty main' > /etc/apt/sources.list.d/git.list"
