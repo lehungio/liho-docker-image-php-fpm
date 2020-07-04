@@ -12,6 +12,8 @@ RUN pecl install redis \
     && pecl install xdebug \
     && docker-php-ext-enable redis xdebug
 
+# TODO-01 libpng12-dev # has no installation candidate
+# https://hub.docker.com/repository/registry-1.docker.io/lehungio/php-fpm/builds/e4c5c8ec-8b37-4e9e-a1cd-8ad1cb21ba4e
 RUN apt-get update && apt-get upgrade -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -19,7 +21,7 @@ RUN apt-get update && apt-get upgrade -y \
     libmagickwand-dev \
     libmcrypt-dev \
     libmcrypt-dev \
-    libpng12-dev \
+    # TODO-01
     libmemcached-dev \
     libssl-dev \
     libssl-doc \
