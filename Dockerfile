@@ -41,3 +41,21 @@ RUN docker-php-ext-install \
     pdo_pgsql \
     soap \
     zip
+
+# locale
+# https://github.com/LaraDock/laradock/issues/167#issuecomment-234805362
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libmemcached-dev \
+    curl \
+    libjpeg-dev \
+    libpng12-dev \
+    libfreetype6-dev \
+    libssl-dev \
+    libmcrypt-dev \
+    locales \
+    --no-install-recommends \
+    && rm -r /var/lib/apt/lists/* \
+    && sed -i 's/# en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/' /etc/locale.gen \
+    && sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+    && locale-gen
