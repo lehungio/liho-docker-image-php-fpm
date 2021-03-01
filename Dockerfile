@@ -67,6 +67,10 @@ RUN apt-get install -y libzip-dev zip && docker-php-ext-install zip
 # imagick
 RUN pecl install imagick
 
+# Install intl extension
+RUN docker-php-ext-install -j$(nproc) intl \
+    && docker-php-ext-enable intl
+
 # Node dependencies
 # https://github.com/nodejs/Release
 ENV NVM_DIR /root/.nvm
